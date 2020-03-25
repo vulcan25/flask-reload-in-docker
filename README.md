@@ -14,12 +14,12 @@ Pre-reqs
 You'll need to create the `.env-prod` and `.env-dev` files manually:
 
     # .env-prod
-    FROM_ENV_FILE='Hey this loaded from prod-env!'
+    FROM_ENV_FILE='Hey this loaded from prod env!'
 
 and
 
     # .env-dev
-    FROM_ENV_FILE='Hey this loaded from prod-env!'
+    FROM_ENV_FILE='Hey this loaded from dev env!'
 
 The `.gitignore` file contains a line which prevents these from being committed to the repo.
 
@@ -59,7 +59,7 @@ Some significant parts of the `docker-compose.yml` (prod) file are:
       - .env-prod
     command: gunicorn --bind '0.0.0.0:5000' app:app
 
-In prod, this launches the app with `gunicorn`,  There is no volume mount in this file, so the source code which is run is that which is baked into the image.  Therefor to take account of the latest changes to your code, prior to launching in prod with `docker-compose up` you'll need to do `docker-compose build`
+In prod, this launches the app with `gunicorn`,  There is no volume mount in this file, so the source code which is run is that which is baked into the image.  **Therefor to take account of the latest changes to your code, prior to launching in prod with `docker-compose up` you'll need to do `docker-compose build`**
 
 Dev
 ---
