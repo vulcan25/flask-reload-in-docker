@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    environment:
+      - FLASK_ENV=development
+    env_file:
+      - .env-dev
+    command: flask run -h 0.0.0.0
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./code:/code
